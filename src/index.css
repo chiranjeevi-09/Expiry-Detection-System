@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 210 40% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 11%;
+
+    --primary: 173 58% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 210 40% 11%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 173 58% 39%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 40% 11%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 173 58% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 18%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 210 30% 18%;
+    --sidebar-ring: 173 58% 45%;
+
+    --chart-1: 173 58% 39%;
+    --chart-2: 38 92% 50%;
+    --chart-3: 142 71% 45%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 262 83% 58%;
+  }
+
+  .dark {
+    --background: 210 40% 8%;
+    --foreground: 210 20% 98%;
+
+    --card: 210 35% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 210 35% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 173 58% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 30% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 30% 18%;
+    --muted-foreground: 210 15% 55%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 173 58% 45%;
+
+    --sidebar-background: 210 40% 6%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 173 58% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 30% 12%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 210 30% 15%;
+    --sidebar-ring: 173 58% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-card/80 backdrop-blur-lg;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(173 58% 32%) 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(25 92% 45%) 100%);
+  }
+
+  .gradient-success {
+    background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(142 71% 35%) 100%);
+  }
+
+  .gradient-destructive {
+    background: linear-gradient(135deg, hsl(var(--destructive)) 0%, hsl(0 72% 40%) 100%);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 40px -10px hsl(var(--primary) / 0.3);
+  }
+
+  .shadow-card {
+    box-shadow: 0 4px 20px -4px hsl(var(--foreground) / 0.08);
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  .animate-slide-out-left {
+    animation: slideOutLeft 0.3s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
+  }
+
+  .animate-scan {
+    animation: scan 2s linear infinite;
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
