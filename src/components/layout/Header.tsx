@@ -37,10 +37,11 @@ export function Header({ onMenuClick }: HeaderProps) {
         </Button>
 
         {/* Center - Logo & Title */}
-        <div className="flex items-center gap-2">
-          <div className="gradient-primary p-2 rounded-lg">
-            <Package className="h-5 w-5 text-primary-foreground" />
-          </div>
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => navigate('/')}
+        >
+          <img src="/logo.jpg" alt="EDS Logo" className="h-10 w-auto object-contain mix-blend-multiply" />
           <h1 className="text-xl font-bold text-foreground tracking-tight">
             EDS
           </h1>

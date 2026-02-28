@@ -55,8 +55,8 @@ export default function NotifiedProducts() {
       {notifiedProducts.length === 0 ? (
         <Card className="p-12 text-center">
           <div className="flex flex-col items-center gap-4">
-            <div className="p-4 rounded-full bg-success/10">
-              <Package className="h-8 w-8 text-success" />
+            <div className="p-4 rounded-full bg-success/10 flex items-center justify-center">
+              <img src="/logo.jpg" alt="EDS Logo" className="h-8 w-auto mix-blend-multiply object-contain grayscale opacity-60" />
             </div>
             <div>
               <h3 className="font-semibold text-foreground">All Clear!</h3>
