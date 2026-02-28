@@ -155,7 +155,7 @@ export default function Auth() {
       <Card className="w-full max-w-md shadow-card">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto flex items-center justify-center">
-            <img src="/logo.jpg" alt="EDS Logo" className="h-16 w-auto object-contain mix-blend-multiply" />
+            <img src="/logo.jpg" alt="EDS Logo" className="h-20 w-auto object-contain" />
           </div>
           <div>
             <CardTitle className="text-2xl font-bold">EDS</CardTitle>
