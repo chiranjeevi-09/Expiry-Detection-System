@@ -42,9 +42,6 @@ export function Header({ onMenuClick }: HeaderProps) {
           onClick={() => navigate('/')}
         >
           <img src="/logo.jpg" alt="EDS Logo" className="h-10 w-auto object-contain mix-blend-multiply" />
-          <h1 className="text-xl font-bold text-foreground tracking-tight">
-            EDS
-          </h1>
         </div>
 
         {/* Right - Profile Button (Direct Navigation) */}
