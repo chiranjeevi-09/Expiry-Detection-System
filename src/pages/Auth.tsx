@@ -64,6 +64,9 @@ export default function Auth() {
         provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/`,
+          queryParams: {
+            prompt: 'select_account'
+          }
         },
       });
 
