@@ -82,88 +82,88 @@ export default function StoreProduct({
     setAlertDate(null);
   };
   return <div className="space-y-6 max-w-2xl mx-auto">
-      {/* Page Header */}
-      <div className="flex items-center gap-3">
-        <div className={`p-3 rounded-xl ${isFood ? 'gradient-success' : 'gradient-primary'}`}>
-          <Icon className="h-6 w-6 text-primary-foreground" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">
-            Store {isFood ? 'Food' : 'Non-Food'} Product
-          </h1>
-          <p className="text-muted-foreground">
-            Add new {type} items to inventory
-          </p>
-        </div>
+    {/* Page Header */}
+    <div className="flex items-center gap-3">
+      <div className={`p-3 rounded-xl ${isFood ? 'gradient-success' : 'gradient-primary'}`}>
+        <Icon className="h-6 w-6 text-primary-foreground" />
       </div>
+      <div>
+        <h1 className="text-2xl font-bold text-foreground">
+          Store {isFood ? 'Food' : 'Non-Food'} Product
+        </h1>
+        <p className="text-muted-foreground">
+          Add new {type} items to inventory
+        </p>
+      </div>
+    </div>
 
-      {/* Form */}
-      <Card className="p-6 shadow-card">
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Barcode */}
-          <BarcodeInput value={barcode} onChange={setBarcode} onProductFound={handleProductFound} />
+    {/* Form */}
+    <Card className="p-6 shadow-card">
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Barcode */}
+        <BarcodeInput value={barcode} onChange={setBarcode} onProductFound={handleProductFound} />
 
-          {/* Product Name */}
+        {/* Product Name */}
+        <div className="space-y-2">
+          <Label htmlFor="name">Product Name *</Label>
+          <Input id="name" type="text" value={productName} onChange={e => setProductName(e.target.value)} placeholder="Enter product name..." required />
+        </div>
+
+        {/* Variant (Optional) */}
+        <div className="space-y-2">
+          <Label htmlFor="variant">Variant</Label>
+          <Input id="variant" type="text" value={variant} onChange={e => setVariant(e.target.value)} placeholder="e.g., Chocolate, 500ml, Large..." />
+        </div>
+
+        {/* Weight & Quantity */}
+        <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Product Name *</Label>
-            <Input id="name" type="text" value={productName} onChange={e => setProductName(e.target.value)} placeholder="Enter product name..." required />
+            <Label htmlFor="weight">Weight (grams) *</Label>
+            <Input id="weight" type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder="e.g., 500" min="1" required />
           </div>
-
-          {/* Variant (Optional) */}
           <div className="space-y-2">
-            <Label htmlFor="variant">Variant</Label>
-            <Input id="variant" type="text" value={variant} onChange={e => setVariant(e.target.value)} placeholder="e.g., Chocolate, 500ml, Large..." />
+            <Label htmlFor="quantity">Quantity *</Label>
+            <Input id="quantity" type="number" value={quantity} onChange={e => setQuantity(e.target.value)} placeholder="e.g., 10" min="1" required />
           </div>
+        </div>
 
-          {/* Weight & Quantity */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="weight">Weight (grams) *</Label>
-              <Input id="weight" type="number" value={weight} onChange={e => setWeight(e.target.value)} placeholder="e.g., 500" min="1" required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="quantity">Quantity *</Label>
-              <Input id="quantity" type="number" value={quantity} onChange={e => setQuantity(e.target.value)} placeholder="e.g., 10" min="1" required />
-            </div>
+        {/* Expiry Date */}
+        <ExpiryScanner value={expiryDate} onChange={setExpiryDate} />
+
+        {/* Alert Date Display - Only shown when expiry date is set */}
+        <div className="space-y-2">
+          <Label className="text-foreground flex items-center gap-2">
+            <CalendarClock className="h-4 w-4" />
+            Alert Date
+          </Label>
+          <div className={`p-3 rounded-lg border ${alertDate ? 'bg-warning/10 border-warning/30' : 'bg-muted/50 border-border'}`}>
+            {alertDate ? <div className="flex items-center justify-between">
+              <span className="text-sm text-foreground font-medium">
+                {format(new Date(alertDate), 'dd MMM yyyy')}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Notification will trigger on this date
+              </span>
+            </div> : <span className="text-sm text-muted-foreground italic">
+              Enter expiry date to calculate alert date
+            </span>}
           </div>
+        </div>
 
-          {/* Expiry Date */}
-          <ExpiryScanner value={expiryDate} onChange={setExpiryDate} />
+        {/* Algorithm Info */}
 
-          {/* Alert Date Display - Only shown when expiry date is set */}
-          <div className="space-y-2">
-            <Label className="text-foreground flex items-center gap-2">
-              <CalendarClock className="h-4 w-4" />
-              Alert Date
-            </Label>
-            <div className={`p-3 rounded-lg border ${alertDate ? 'bg-warning/10 border-warning/30' : 'bg-muted/50 border-border'}`}>
-              {alertDate ? <div className="flex items-center justify-between">
-                  <span className="text-sm text-foreground font-medium">
-                    {format(new Date(alertDate), 'dd MMM yyyy')}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    Notification will trigger on this date
-                  </span>
-                </div> : <span className="text-sm text-muted-foreground italic">
-                  Enter expiry date to calculate alert date
-                </span>}
-            </div>
-          </div>
 
-          {/* Algorithm Info */}
-          
-
-          {/* Submit */}
-          <Button type="submit" disabled={isAdding} className="w-full gradient-primary text-primary-foreground">
-            {isAdding ? <>
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                Storing Product...
-              </> : <>
-                <Check className="h-4 w-4 mr-2" />
-                Store Product
-              </>}
-          </Button>
-        </form>
-      </Card>
-    </div>;
+        {/* Submit */}
+        <Button type="submit" disabled={isAdding} className="w-full gradient-primary text-primary-foreground">
+          {isAdding ? <>
+            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+            Storing Product...
+          </> : <>
+            <Check className="h-4 w-4 mr-2" />
+            Store Product
+          </>}
+        </Button>
+      </form>
+    </Card>
+  </div>;
 }

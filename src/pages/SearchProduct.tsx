@@ -26,7 +26,7 @@ export default function SearchProduct() {
       setHasSearched(false);
       return;
     }
-    
+
     setShowBarcodeError(false);
     const results = searchProducts(
       barcode.trim(),
@@ -123,7 +123,7 @@ export default function SearchProduct() {
             </h2>
             <Badge variant="secondary">{searchResults.length} products</Badge>
           </div>
-          
+
           {searchResults.length === 0 ? (
             <Card className="p-8 text-center">
               <Package className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" />

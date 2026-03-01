@@ -90,114 +90,114 @@ export default function Profile() {
     }
   };
   return <div className="space-y-6">
-      {/* Page Header */}
-      <div className="flex items-center gap-3">
-        <div className="gradient-primary p-3 rounded-xl">
-          <User className="h-6 w-6 text-primary-foreground" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">Profile</h1>
-          <p className="text-muted-foreground">Manage your account settings</p>
-        </div>
+    {/* Page Header */}
+    <div className="flex items-center gap-3">
+      <div className="gradient-primary p-3 rounded-xl">
+        <User className="h-6 w-6 text-primary-foreground" />
       </div>
+      <div>
+        <h1 className="text-2xl font-bold text-foreground">Profile</h1>
+        <p className="text-muted-foreground">Manage your account settings</p>
+      </div>
+    </div>
 
-      {/* Profile Card */}
-      <Card className="p-6 shadow-card">
-        <div className="space-y-6">
-          {/* Avatar Section - Click to Upload */}
-          <div className="flex flex-col items-center gap-4">
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleAvatarUpload}
-              accept="image/*"
-              className="hidden"
-            />
-            <button
-              type="button"
-              onClick={() => fileInputRef.current?.click()}
-              className="relative group"
-              disabled={isUploading}
-            >
-              <Avatar className="h-24 w-24">
-                <AvatarImage src={avatarUrl || undefined} />
-                <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
-                  {getInitials()}
-                </AvatarFallback>
-              </Avatar>
-              <div className="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <Upload className="h-6 w-6 text-white" />
-              </div>
-            </button>
-            <p className="text-sm text-muted-foreground">
-              {isUploading ? 'Uploading...' : 'Tap to change photo'}
-            </p>
-          </div>
-
-          {/* Email (Read Only) */}
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-foreground flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              Email Address
-            </Label>
-            <Input id="email" type="email" value={user?.email || ''} disabled className="bg-muted" />
-            <p className="text-xs text-muted-foreground">
-              Email cannot be changed
-            </p>
-          </div>
-
-          {/* Display Name */}
-          <div className="space-y-2">
-            <Label htmlFor="displayName" className="text-foreground flex items-center gap-2">
-              <User className="h-4 w-4" />
-              Display Name
-            </Label>
-            <Input id="displayName" type="text" value={displayName} onChange={e => setDisplayName(e.target.value)} placeholder="Enter your display name" />
-          </div>
-
-          {/* Mobile Number */}
-          <div className="space-y-2">
-            <Label htmlFor="mobileNumber" className="text-foreground flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              Mobile Number
-            </Label>
-            <Input
-              id="mobileNumber"
-              type="tel"
-              value={mobileNumber}
-              onChange={e => setMobileNumber(e.target.value)}
-              placeholder="Enter your mobile number"
-            />
-          </div>
-
-          {/* Account Created */}
-          <div className="pt-4 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              Account created: {user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
-            </p>
-          </div>
-
-          {/* Save Button */}
-          <Button onClick={handleSave} disabled={isLoading} className="w-full gradient-primary text-primary-foreground">
-            {isLoading ? <>
-                <div className="h-4 w-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
-                Saving...
-              </> : <>
-                <Save className="h-4 w-4 mr-2" />
-                Save Changes
-              </>}
-          </Button>
-
-          {/* Sign Out Button */}
-          <Button 
-            onClick={signOut} 
-            variant="outline" 
-            className="w-full border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
+    {/* Profile Card */}
+    <Card className="p-6 shadow-card">
+      <div className="space-y-6">
+        {/* Avatar Section - Click to Upload */}
+        <div className="flex flex-col items-center gap-4">
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleAvatarUpload}
+            accept="image/*"
+            className="hidden"
+          />
+          <button
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            className="relative group"
+            disabled={isUploading}
           >
-            <LogOut className="h-4 w-4 mr-2" />
-            Sign Out
-          </Button>
+            <Avatar className="h-24 w-24">
+              <AvatarImage src={avatarUrl || undefined} />
+              <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
+                {getInitials()}
+              </AvatarFallback>
+            </Avatar>
+            <div className="absolute inset-0 bg-black/50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <Upload className="h-6 w-6 text-white" />
+            </div>
+          </button>
+          <p className="text-sm text-muted-foreground">
+            {isUploading ? 'Uploading...' : 'Tap to change photo'}
+          </p>
         </div>
-      </Card>
-    </div>;
+
+        {/* Email (Read Only) */}
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-foreground flex items-center gap-2">
+            <Mail className="h-4 w-4" />
+            Email Address
+          </Label>
+          <Input id="email" type="email" value={user?.email || ''} disabled className="bg-muted" />
+          <p className="text-xs text-muted-foreground">
+            Email cannot be changed
+          </p>
+        </div>
+
+        {/* Display Name */}
+        <div className="space-y-2">
+          <Label htmlFor="displayName" className="text-foreground flex items-center gap-2">
+            <User className="h-4 w-4" />
+            Display Name
+          </Label>
+          <Input id="displayName" type="text" value={displayName} onChange={e => setDisplayName(e.target.value)} placeholder="Enter your display name" />
+        </div>
+
+        {/* Mobile Number */}
+        <div className="space-y-2">
+          <Label htmlFor="mobileNumber" className="text-foreground flex items-center gap-2">
+            <Phone className="h-4 w-4" />
+            Mobile Number
+          </Label>
+          <Input
+            id="mobileNumber"
+            type="tel"
+            value={mobileNumber}
+            onChange={e => setMobileNumber(e.target.value)}
+            placeholder="Enter your mobile number"
+          />
+        </div>
+
+        {/* Account Created */}
+        <div className="pt-4 border-t border-border">
+          <p className="text-sm text-muted-foreground">
+            Account created: {user?.created_at ? new Date(user.created_at).toLocaleDateString() : 'N/A'}
+          </p>
+        </div>
+
+        {/* Save Button */}
+        <Button onClick={handleSave} disabled={isLoading} className="w-full gradient-primary text-primary-foreground">
+          {isLoading ? <>
+            <div className="h-4 w-4 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin mr-2" />
+            Saving...
+          </> : <>
+            <Save className="h-4 w-4 mr-2" />
+            Save Changes
+          </>}
+        </Button>
+
+        {/* Sign Out Button */}
+        <Button
+          onClick={signOut}
+          variant="outline"
+          className="w-full border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground"
+        >
+          <LogOut className="h-4 w-4 mr-2" />
+          Sign Out
+        </Button>
+      </div>
+    </Card>
+  </div>;
 }

@@ -123,7 +123,7 @@ export default function History() {
                   <div className={cn("p-2 rounded-lg shrink-0", config.bgColor)}>
                     <Icon className={cn("h-4 w-4", config.color)} />
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-semibold text-foreground truncate">
@@ -133,13 +133,13 @@ export default function History() {
                         {entry.action}
                       </Badge>
                     </div>
-                    
+
                     {entry.details && (
                       <p className="text-sm text-muted-foreground mt-1">
                         {entry.details}
                       </p>
                     )}
-                    
+
                     <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                       <span className="font-mono">{entry.barcode}</span>
                       <span>{format(new Date(entry.timestamp), 'dd MMM yyyy, HH:mm')}</span>
