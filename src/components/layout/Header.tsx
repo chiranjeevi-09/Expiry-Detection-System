@@ -37,10 +37,7 @@ export function Header({ onMenuClick }: HeaderProps) {
         </Button>
 
         {/* Center - Logo & Title */}
-        <div
-          className="flex items-center gap-2 cursor-pointer"
-          onClick={() => navigate('/')}
-        >
+        <div className="flex items-center gap-2">
           <img src="/logo.jpg" alt="EDS Logo" className="h-10 w-auto object-contain mix-blend-multiply" />
         </div>
 
